@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --env.dev",
-    "prod": "webpack --env.prod"
+    "prod": "webpack --env.prod",
+    "deploy": "yarn run prod && git subtree push --prefix public origin gh-pages"
   },
   "author": "Sopheak",
   "license": "MIT",

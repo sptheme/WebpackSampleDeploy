@@ -1,0 +1,19 @@
+/* Load fonts */
+@import "~font-awesome/css/font-awesome";
+@import "~material-design-iconic-font/dist/css/material-design-iconic-font";
+
+/* Loads Bootstrap4 */
+@import "~bootstrap/scss/bootstrap";
+
+/* Optional vendors */
+@import "vendors";
+
+html,
+body {
+    height: 100%;
+}
+
+body{
+    background: url('../images/webpack.svg') center center no-repeat;
+    background-size: 25%;
+}

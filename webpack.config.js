@@ -21,7 +21,7 @@ module.exports = env => {
             app: './src/scripts/app'
         }, 
         output: {
-            path: path.join(__dirname, 'public'),
+            path: path.join(__dirname, 'dist'),
             filename: 'js/[name].js',
             pathinfo: ifNotProd()
         },
@@ -103,7 +103,7 @@ module.exports = env => {
         devtool: ifProd('srouce-map', 'eval'),
 
         devServer: {
-            contentBase: path.join(__dirname, 'public'),
+            contentBase: path.join(__dirname, 'dist'),
             hot: true,
             stats: 'minimal'
         },
@@ -121,7 +121,7 @@ module.exports = env => {
                 Tether: 'tether',
                 'window.Tether': 'tether',
             }),
-            ifProd(new CleanWebpackPlugin(['public/js', 'public/css'], {
+            ifProd(new CleanWebpackPlugin(['dist/js', 'dist/css'], {
                 root:     __dirname,
                 verbose:  true,
                 dry:      false

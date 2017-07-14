@@ -1,1 +1,0 @@
-webpackJsonp([1],{4:function(n,o,a){"use strict";function c(n,o){if(!(n instanceof o))throw new TypeError("Cannot call a class as a function")}a(5),new function n(){c(this,n),console.log("Yha! Form class are great!!!")}},5:function(n,o){}},[4]);

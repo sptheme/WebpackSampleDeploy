@@ -12,6 +12,7 @@
   "license": "MIT",
   "dependencies": {
     "bootstrap": "4.0.0-alpha.6",
+    "flag-icon-css": "^2.8.0",
     "font-awesome": "^4.7.0",
     "jquery": "^3.2.1",
     "material-design-iconic-font": "^2.2.0",

@@ -100,7 +100,7 @@ module.exports = env => {
             ])
         },
 
-        devtool: ifProd('srouce-map', 'eval'),
+        devtool: ifProd('source-map', 'eval'),
 
         devServer: {
             contentBase: path.join(__dirname, 'dist'),
@@ -129,10 +129,10 @@ module.exports = env => {
             new ExtractTextPlugin({ 
                 filename: 'css/style.css', allChunks: true
             }),
-            ifProd(new InlineManifestWebpackPlugin()),
-            ifProd(new webpack.optimize.CommonsChunkPlugin({
+            //ifProd(new InlineManifestWebpackPlugin()),
+            new webpack.optimize.CommonsChunkPlugin({
                 names: ['vendor', 'manifest'],
-            })),
+            }),
             ifProd(new webpack.optimize.UglifyJsPlugin({
                 compress: {
                     screw_ie8: true,

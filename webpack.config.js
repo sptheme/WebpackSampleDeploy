@@ -10,7 +10,7 @@ const {getIfUtils, removeEmpty} = require('webpack-config-utils')
 let VENDOR_LIBS = [
     'jquery', 
     'tether',
-    'bootstrap',
+    'bootstrap'
 ];
 
 module.exports = env => {
@@ -126,9 +126,9 @@ module.exports = env => {
                 verbose:  true,
                 dry:      false
             })),
-            new ExtractTextPlugin({ 
+            ifProd(new ExtractTextPlugin({ 
                 filename: 'css/style.css', allChunks: true
-            }),
+            })),
             //ifProd(new InlineManifestWebpackPlugin()),
             new webpack.optimize.CommonsChunkPlugin({
                 names: ['vendor', 'manifest'],

@@ -4,6 +4,7 @@ const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const {getIfUtils, removeEmpty} = require('webpack-config-utils')
 
@@ -100,7 +101,7 @@ module.exports = env => {
             ])
         },
 
-        devtool: ifProd('source-map', 'eval'),
+        devtool: ifProd('source-map', 'cheap-eval-source-map'),
 
         devServer: {
             contentBase: path.join(__dirname, 'dist'),
@@ -144,6 +145,24 @@ module.exports = env => {
                     NODE_ENV: ifProd('"production"', '"development"')
                 }
             }),
+            ifNotProd(
+                new BrowserSyncPlugin({
+                    host: 'localhost',
+                    port: 3000,
+                    proxy: 'http://localhost:8081/',
+                    files: [{
+                        match: [
+                            '**/*.html'
+                        ],
+                        fn: function(event, file) {
+                            if (event === "change") {
+                                const bs = require('browser-sync').get('bs-webpack-plugin');
+                                bs.reload();
+                            }
+                        }
+                    }]
+                }, { reload: false })
+            ),
             ifNotProd(new webpack.HotModuleReplacementPlugin()),
             ifNotProd(new webpack.NamedModulesPlugin()),
 

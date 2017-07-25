@@ -7,3 +7,11 @@ class Form {
 }
 
 new Form();
+
+
+// For development part
+if (process.env.NODE_ENV === 'development') {
+    if (module.hot) {
+        module.hot.accept();
+    }
+}
